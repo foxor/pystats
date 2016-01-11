@@ -2,7 +2,7 @@
 
 # change these if you want
 sampleCount = 10000
-histogramWidth = 80
+histogramWidth = 220
 histogramHeight = 30
 numLabels = 6
 rowLabelSpacing = 3
@@ -167,6 +167,12 @@ def testSample():
 def bellCurve():
   return random.normalvariate(0, 1)
 
+def dice():
+  acc = 0
+  for i in range(100):
+    acc += random.randint(1, 6)
+  return acc
+
 def test():
   print("Average (1-10): %.2f" % average(testSample))
   print("Standard Deviation (1-10): %.2f" % standardDeviation(testSample))
@@ -174,7 +180,10 @@ def test():
   print("Standard Deviation (single sample): %.2f" % standardDeviation(testSample))
   sampleCount = 10000
   printHistogram(testSample, "1-10")
+  print("")
   printHistogram(bellCurve, "Bell Curve")
+  print("")
+  printHistogram(dice, "100d6")
 
 if __name__ == '__main__':
   test()
